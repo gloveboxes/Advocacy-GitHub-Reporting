@@ -81,24 +81,12 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Advocacy
 {
-    public class RepoItem
-    {
-        public DateTime date { get; set; }
-        public int clones { get; set; }
-        public string repo { get; set; }
-        public string group { get; set; }
-        public string owner { get; set; }
-    }
-}
-
-namespace Microsoft.Advocacy
-{
     public static class GitHubCloneCount
     {
         [FunctionName("GitHubCloneCount")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req, ILogger log,
-            [Sql("dbo.GitHubStats", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<RepoItem> newItems)
+            [Sql("dbo.GitHubStats", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<CloneItem> newItems)
         {
             try
             {
@@ -107,7 +95,7 @@ namespace Microsoft.Advocacy
 
                 foreach (var item in jsonObject["stats"])
                 {
-                    var repoItem = new RepoItem()
+                    var repoItem = new CloneItem()
                     {
                         repo = item["repo"].ToString(),
                         date = Convert.ToDateTime(item["timestamp"]),
