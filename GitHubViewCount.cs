@@ -22,7 +22,7 @@ namespace Microsoft.Advocacy
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 JObject jsonObject = JObject.Parse(requestBody);
 
-                foreach (var item in jsonObject["stats"])
+                foreach (var item in jsonObject["views"])
                 {
                     var repoItem = new ViewItem()
                     {
@@ -30,7 +30,7 @@ namespace Microsoft.Advocacy
                         date = Convert.ToDateTime(item["timestamp"]),
                         group = item["group"].ToString(),
                         owner = item["owner"].ToString(),
-                        views = Convert.ToInt32(item["views"]),
+                        views = Convert.ToInt32(item["count"]),
                     };
 
                     await newItems.AddAsync(repoItem);
