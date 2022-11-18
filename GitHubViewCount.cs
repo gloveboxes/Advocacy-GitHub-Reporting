@@ -43,7 +43,8 @@ namespace Microsoft.Advocacy
             }
             catch (Exception ex)
             {
-                return new OkObjectResult(ex.Message);
+              log.LogError(ex, "Error in GitHubViewCount");
+              return new BadRequestObjectResult(ex.Message);
             }
         }
     }

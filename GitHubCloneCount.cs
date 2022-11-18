@@ -114,7 +114,8 @@ namespace Microsoft.Advocacy
             }
             catch (Exception ex)
             {
-                return new OkObjectResult(ex.Message);
+              log.LogError(ex, "Error in GitHubCloneCount");
+              return new BadRequestObjectResult(ex.Message);
             }
         }
     }
