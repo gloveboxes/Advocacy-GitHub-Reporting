@@ -10,65 +10,73 @@ using System.Threading.Tasks;
 
 /*
 {
-  "count": 50,
-  "uniques": 41,
-  "clones": [
-    {
-      "timestamp": "2022-11-02T00:00:00Z",
-      "count": 8,
-      "uniques": 7,
-      "repo": "dave"
-    },
-    {
-      "timestamp": "2022-11-03T00:00:00Z",
-      "count": 30,
-      "uniques": 25,
-      "repo": "dave"
-    },
+  "stats": [
     {
       "timestamp": "2022-11-04T00:00:00Z",
-      "count": 3,
       "uniques": 3,
-      "repo": "dave"
+      "clones": 3,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     },
     {
       "timestamp": "2022-11-06T00:00:00Z",
-      "count": 1,
       "uniques": 1,
-      "repo": "dave"
+      "clones": 1,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     },
     {
       "timestamp": "2022-11-07T00:00:00Z",
-      "count": 2,
       "uniques": 1,
-      "repo": "dave"
+      "clones": 2,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     },
     {
       "timestamp": "2022-11-08T00:00:00Z",
-      "count": 1,
       "uniques": 1,
-      "repo": "dave"
+      "clones": 1,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     },
     {
       "timestamp": "2022-11-13T00:00:00Z",
-      "count": 2,
       "uniques": 1,
-      "repo": "dave"
+      "clones": 2,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     },
     {
       "timestamp": "2022-11-14T00:00:00Z",
-      "count": 1,
       "uniques": 1,
-      "repo": "dave"
+      "clones": 1,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     },
     {
       "timestamp": "2022-11-15T00:00:00Z",
-      "count": 2,
       "uniques": 1,
-      "repo": "dave"
+      "clones": 2,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
+    },
+    {
+      "timestamp": "2022-11-16T00:00:00Z",
+      "uniques": 3,
+      "clones": 4,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
+    },
+    {
+      "timestamp": "2022-11-17T00:00:00Z",
+      "uniques": 6,
+      "clones": 10,
+      "repo": "newpatiente2e/Contoso-New-Patient-App",
+      "group": "aiml"
     }
   ]
 }
+
 */
 
 namespace Microsoft.Advocacy
@@ -76,8 +84,10 @@ namespace Microsoft.Advocacy
     public class RepoItem
     {
         public DateTime date { get; set; }
-        public int count { get; set; }
+        public int clones { get; set; }
         public string repo { get; set; }
+        public string group { get; set; }
+        public string owner { get; set; }
     }
 }
 
@@ -88,20 +98,22 @@ namespace Microsoft.Advocacy
         [FunctionName("GitHubCloneCount")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req, ILogger log,
-            [Sql("dbo.GitHubCloneStats", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<RepoItem> newItems)
+            [Sql("dbo.GitHubStats", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<RepoItem> newItems)
         {
             try
             {
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 JObject jsonObject = JObject.Parse(requestBody);
 
-                foreach (var item in jsonObject["clones"])
+                foreach (var item in jsonObject["stats"])
                 {
                     var repoItem = new RepoItem()
                     {
                         repo = item["repo"].ToString(),
-                        count = Convert.ToInt32(item["count"]),
-                        date = Convert.ToDateTime(item["timestamp"])
+                        date = Convert.ToDateTime(item["timestamp"]),
+                        group = item["group"].ToString(),
+                        owner = item["owner"].ToString(),
+                        clones = Convert.ToInt32(item["clones"]),
                     };
 
                     await newItems.AddAsync(repoItem);
