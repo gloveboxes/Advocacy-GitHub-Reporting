@@ -26,6 +26,7 @@ namespace Microsoft.Advocacy
                 {
                     var repoItem = new ViewItem()
                     {
+                        repo_id = Convert.ToUInt64(item["repo_id"]),
                         repo = item["repo"].ToString(),
                         date = Convert.ToDateTime(item["timestamp"]),
                         group = item["group"].ToString(),

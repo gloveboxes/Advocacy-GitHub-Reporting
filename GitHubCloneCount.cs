@@ -26,19 +26,19 @@ namespace Microsoft.Advocacy
                 {
                     var repoItem = new CloneItem()
                     {
+                        repo_id = Convert.ToUInt64(item["repo_id"]),
                         repo = item["repo"].ToString(),
                         date = Convert.ToDateTime(item["timestamp"]),
                         group = item["group"].ToString(),
                         owner = item["owner"].ToString(),
                         clones = Convert.ToInt32(item["count"]),
+                        stars = Convert.ToInt32(item["stars"])
                     };
 
                     await newItems.AddAsync(repoItem);
                 }
 
                 // Rows are upserted here
-                await newItems.FlushAsync();
-
                 return new OkResult();
             }
             catch (Exception ex)
