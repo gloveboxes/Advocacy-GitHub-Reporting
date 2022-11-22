@@ -30,7 +30,6 @@ namespace Microsoft.Advocacy
                         repo = item["repo"].ToString(),
                         date = Convert.ToDateTime(item["timestamp"]),
                         group = item["group"].ToString(),
-                        owner = item["owner"].ToString(),
                         views = Convert.ToInt32(item["count"]),
                     };
 

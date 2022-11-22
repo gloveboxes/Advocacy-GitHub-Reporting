@@ -30,9 +30,7 @@ namespace Microsoft.Advocacy
                         repo = item["repo"].ToString(),
                         date = Convert.ToDateTime(item["timestamp"]),
                         group = item["group"].ToString(),
-                        owner = item["owner"].ToString(),
-                        clones = Convert.ToInt32(item["count"]),
-                        stars = Convert.ToInt32(item["stars"])
+                        clones = Convert.ToInt32(item["count"])
                     };
 
                     await newItems.AddAsync(repoItem);
