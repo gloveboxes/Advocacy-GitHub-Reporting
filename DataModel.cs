@@ -23,5 +23,6 @@ namespace Microsoft.Advocacy
     public class StatsItem : RepoItem
     {
         public int stars { get; set; }
+        public int forks { get; set; }
     }
 }
