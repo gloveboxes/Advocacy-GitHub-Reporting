@@ -39,4 +39,4 @@ jobs:
           app-name: 'githubstatsdng'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23F8BF67AEB849C3BD84624AF11364AE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EA8A04B572644585B0C0A390570ECF18 }}
