@@ -39,4 +39,4 @@ jobs:
           app-name: 'githubstatshjjhhgfu7dity'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AE8C6610030046CDA25C480297E55934 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C9235F93A59345CF97F2C40A986DD4BA }}
