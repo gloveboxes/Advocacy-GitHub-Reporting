@@ -32,3 +32,6 @@ module function_app 'function.bicep' = {
     sqlConnectionString: azure_sql.outputs.SQL_CONNECTION_STRING
   }
 }
+
+
+output defaultHostKey string = function_app.outputs.defaultHostKey

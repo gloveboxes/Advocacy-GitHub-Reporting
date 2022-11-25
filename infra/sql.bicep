@@ -45,4 +45,7 @@ resource sqlDB 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
   }
 }
 
+
+// https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter-rule-outputs-should-not-contain-secrets
+#disable-next-line outputs-should-not-contain-secrets
 output SQL_CONNECTION_STRING string = 'Server=tcp:${reference(sqlServer.id).fullyQualifiedDomainName},1433;Initial Catalog=${sqlDBName};Persist Security Info=False;User ID=${sqlAdministratorLogin};Password=${sqlAdministratorLoginPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
