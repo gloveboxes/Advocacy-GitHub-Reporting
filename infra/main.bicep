@@ -40,3 +40,5 @@ module resources './resources.bicep' = {
     functionAppName: functionAppName
   }
 }
+
+output function_endpoint string = 'Azure Function App URL: https://${functionAppName}.azurewebsites.net'
