@@ -14,7 +14,7 @@ namespace Microsoft.Advocacy
     {
         [FunctionName("GitHubViewCount")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req, ILogger log,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req, ILogger log,
             [Sql("dbo.GitHubStats", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<ViewItem> newItems)
         {
             try
