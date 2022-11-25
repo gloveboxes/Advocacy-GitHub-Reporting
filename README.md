@@ -27,7 +27,7 @@
 RESOURCE_GROUP_NAME=<Your_Preferred_Resource_Group_Name>
 LOCATION_NAME=<Your_Preferred_Location_Name>
 az group create --name $RESOURCE_GROUP_NAME --location $LOCATION_NAME
-az deployment group create --resource-group $RESOURCE_GROUP_NAME --template-file main.bicep
+az deployment group create --resource-group $RESOURCE_GROUP_NAME --template-file main.bicep --query properties.outputs
 ```
 
 ### Azure Function App Endpoint URL
@@ -35,12 +35,22 @@ az deployment group create --resource-group $RESOURCE_GROUP_NAME --template-file
 When the deployment completes, the output will include the Azure Function App Endpoint URL. Make a note of the URL as you will need it for the GitHub Metrics Action.
 
 ```json
-"outputs": {
-    "function_endpoint": {
+{
+  "function_endpoint": {
     "type": "String",
-    "value": "Azure Function App URL: https://function-app-abc123.azurewebsites.net"
-    }
-},
+    "value": "Azure Function App URL: https://function-app-sds8d7s8hjh.azurewebsites.net"
+  },
+  "function_key": {
+    "type": "String",
+    "value": "Azure Function Host Key: udfad8a7s8d7ba8d7a099bxdawydaydo93wdqobxqwudh=="
+  }
+}
+```
+
+### Get the Function App host key
+
+```
+az functionapp keys list -g test-github-engagement-1-rg -n function-app-ao4lpd47m23am
 ```
 
 ## Initialize the Azure SQL Database
