@@ -47,15 +47,9 @@ When the deployment completes, the output will include the Azure Function App En
 }
 ```
 
-### Get the Function App host key
-
-```
-az functionapp keys list -g test-github-engagement-1-rg -n function-app-ao4lpd47m23am
-```
-
 ## Initialize the Azure SQL Database
 
-For now a manual process. This will be automated in the future.
+For now a manual process. This may be automated in the future.
 
 1. Open the Azure Portal
 1. Navigate to the Azure SQL Database, by default named `github-metrics`
@@ -113,22 +107,55 @@ For now a manual process. This will be automated in the future.
     GO
     ```
 
-## Deploy GitHub Metrics Action
+
+## Create a GitHub Personal Access Token
+
+If your repo is in a personal account, you can create a Personal Access Token (PAT) for your account. If your repo is in an organization, you will need to create a PAT for the organization.
+
+### Create a Personal Access Token
+
+### Create a Personal Access Token for an Organization
 
 1. Create a GitHub Personal Access Token (PAT) with the `repo` scope
 
-## GitHub Metrics GitHub Action
+## Create required GitHub Secrets
 
-```github
-# GitHub Action to post GitHub metrics to a webhook
-# Requirements. Two secrets:
-#   1. A PAT with repo rights named PAT_REPO_REPORT
-#   2. The webhook endpoint named ENDPOINT_REPO_REPORT
-#   3. The Webhook secret named ENDPOINT_SECRET
-#   4. Reporting group/team GROUP_REPO_REPORT
+If you repo is in a personal account, you can create the secrets in the repo settings. If the repo is in an organization, you will need to create the secrets in the organization settings.
 
+### Personal Account
 
-name: "Repo metrics report"
+Create a GitHub Personal Access Token (PAT) with the `repo` scope.
+
+1. Navigate to the GitHub repo Settings
+1. Select Secrets, then select Actions.
+
+### Organization Account
+
+Create a Organization Personal Access Token (PAT) with the `repo` scope.
+
+1. Navigate to the GitHub Organization Settings
+1. Select Secrets, then select Actions.
+
+### Add the following secrets
+
+| Name  | Secret   |
+|---|---|
+| REPORTING_PAT  |  Set the secret to the GitHub PAT you created in the previous step. |
+| REPORTING_ENDPOINT_URL  |  Set the secret to the Azure Function App Endpoint URL. |
+| REPORTING_ENDPOINT_KEY  |  Set the secret to the Azure Function App Host Key. |
+| REPORTING_GROUP  |  Set the group secret. <br/>The group secret is used for consolidated reporting. It's arbitrary, for example, use your team name or your GutHub name. |
+
+### Create the GitHub Metrics Action
+
+```yml
+# GitHub Action to post GitHub metrics to a Azure Function App webhook
+# Required secrets
+#   1. A PAT with repo rights:    PAT_REPO_REPORT
+#   2. The webhook endpoint url:  REPORTING_ENDPOINT_URL
+#   3. The webhook endpoint key:  REPORTING_ENDPOINT_KEY
+#   4. Reporting group/team:      REPORTING_GROUP
+
+name: "GitHub repo metrics report"
 
 on:
   schedule:
@@ -140,17 +167,17 @@ on:
 jobs:
   report_metrics_job:
     runs-on: ubuntu-latest
-    name: report github metrics
+    name: GitHub repo metrics report
     steps:       
       - name: run github metrics image
         id: github_metrics
-        uses: gloveboxes/GitHubReportAction@v1
+        uses: gloveboxes/GitHubMetricsAction@v1
         with:
-          github_personal_access_token: ${{ secrets.PAT_REPO_REPORT }}
           github_repo: ${{ github.repository }}
-          reporting_endpoint: ${{ secrets.ENDPOINT_REPO_REPORT }}
-          reporting_group: $${{ secrets.GROUP_REPO_REPORT }}
-       
+          github_personal_access_token: ${{ secrets.REPORTING_PAT }}
+          reporting_endpoint_url: ${{ secrets.REPORTING_ENDPOINT_URL }}
+          reporting_endpoint_key: ${{ secrets.REPORTING_ENDPOINT_KEY }}
+          reporting_group: $${{ secrets.REPORTING_GROUP }}
 ```
 
 ## Power BI Report
