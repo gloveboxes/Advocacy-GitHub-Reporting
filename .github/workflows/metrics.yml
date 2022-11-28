@@ -18,7 +18,7 @@ jobs:
   report_metrics_job:
     runs-on: ubuntu-latest
     name: GitHub repo metrics report
-      
+    permissions: read-all  
     steps:       
       - name: run github metrics image
         id: github_metrics
