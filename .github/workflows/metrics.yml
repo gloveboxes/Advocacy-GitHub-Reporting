@@ -18,14 +18,13 @@ jobs:
   report_metrics_job:
     runs-on: ubuntu-latest
     name: GitHub repo metrics report
-    permissions: write-all  
     steps:       
       - name: run github metrics image
         id: github_metrics
         uses: gloveboxes/GitHubMetricsAction@v1
         with:
           github_repo: ${{ github.repository }}
-          github_personal_access_token: ${{ secrets.GITHUB_TOKEN }}
+          github_personal_access_token: ${{ secrets.REPORTING_PAT }}
           reporting_endpoint_url: ${{ secrets.REPORTING_ENDPOINT_URL }}
           reporting_endpoint_key: ${{ secrets.REPORTING_ENDPOINT_KEY }}
           reporting_group: $${{ secrets.REPORTING_GROUP }}
