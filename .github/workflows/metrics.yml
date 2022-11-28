@@ -25,7 +25,7 @@ jobs:
         uses: gloveboxes/GitHubMetricsAction@v4
         with:
           github_repo: ${{ github.repository }}
-          github_personal_access_token: ${{ secrets.GITHUB_TOKEN }}
+          github_personal_access_token: ${{ secrets.REPORTING_PAT }}
           reporting_endpoint_url: ${{ secrets.REPORTING_ENDPOINT_URL }}
           reporting_endpoint_key: ${{ secrets.REPORTING_ENDPOINT_KEY }}
           reporting_group: $${{ secrets.REPORTING_GROUP }}
