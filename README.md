@@ -14,6 +14,8 @@ If you are deploying the GitHub Metrics application then follow the [Deploy the 
 
 ## Deploy the GitHub Metrics solution
 
+![The image shows cloud deployment](resources/deploy.png)
+
 Follow these steps to deploy the GitHub Metrics solution.
 
 1. Install the following tools:
@@ -92,6 +94,8 @@ When the deployment completes, the output will display the _reporting_endpoint_u
 
 ## Initialize the Azure SQL Database
 
+![The image shows sql set up](resources/sql-setup.png)
+
 For now a manual process. This may be automated in the future.
 
 1. Open the Azure Portal
@@ -151,6 +155,8 @@ For now a manual process. This may be automated in the future.
     ```
 
 ## Set up a repo to report metrics
+
+![The image shows connecting a GitHub action to the Azure Function App](resources/github-action.png)
 
 The instructions below depend if you want to track GitHub metrics for a repo in your personal GitHub account or a repo in a GitHub organization.
 
