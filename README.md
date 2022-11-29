@@ -206,7 +206,7 @@ For each repo you want to track, upload the GitHub secrets by following these st
 
 ### Add the GitHub Metrics Action to a GitHub repo
 
-```text
+```yml
 # GitHub Action to post GitHub metrics to an Azure Function App webhook
 # Required secrets
 #   1. A PAT with repo rights:    PAT_REPO_REPORT
