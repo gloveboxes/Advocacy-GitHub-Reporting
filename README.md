@@ -146,7 +146,7 @@ For now a manual process. This may be automated in the future.
     GO
     ```
 
-## Upload GitHub metrics secrets
+## Set up a repo to report metrics
 
 The instructions below depend if you want to track GitHub metrics for a repo in your personal GitHub account or a repo in a GitHub organization.
 
@@ -156,6 +156,10 @@ Follow the instructions below for the appropriate scenario.
 - [GitHub organization repos](#github-organization-repos)
 
 ### Personal GitHub account repos
+
+If you didn't set up the GitHub Metrics solution, then the GitHub Metrics solution owner will have been sent you **github.env** config file.
+
+If you set up the GitHub Metrics solution, then you will have the **github.env** config file you created in the [Deploy the GitHub Metrics solution](#deploy-the-github-metrics-solution) section.
 
 #### Install the prerequisites
 
