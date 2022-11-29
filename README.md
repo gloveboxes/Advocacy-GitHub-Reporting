@@ -251,6 +251,8 @@ jobs:
 
 ## Power BI Report
 
+![The image shows Power BI Reporting](resources/power-bi-report.png)
+
 ## Contributing
 
 This project is open source and welcomes contributions. Please raise an issue or submit a pull request.
