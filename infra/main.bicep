@@ -41,5 +41,5 @@ module resources './resources.bicep' = {
   }
 }
 
-output function_endpoint string = 'Azure Function App URL: https://${functionAppName}.azurewebsites.net'
-output function_key string = 'Azure Function Host Key: ${resources.outputs.defaultHostKey}'
+output reporting_endpoint_url string = 'Azure Function App URL: https://${functionAppName}.azurewebsites.net'
+output reporting_endpoint_key string = 'Azure Function Host Key: ${resources.outputs.defaultHostKey}'
