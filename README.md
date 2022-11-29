@@ -105,7 +105,6 @@ For now a manual process. This may be automated in the future.
 1. Create the GitHubStats table
 
     ```sql
-    /****** Object:  Table [dbo].[GitHubStats]    Script Date: 25/11/2022 2:59:51 PM ******/
     SET ANSI_NULLS ON
     GO
 
@@ -138,7 +137,6 @@ For now a manual process. This may be automated in the future.
 1. Create the GitHubStatsDaily view
 
     ```sql
-    /****** Object:  View [dbo].[GitHubStatsDaily]    Script Date: 25/11/2022 3:00:51 PM ******/
     SET ANSI_NULLS ON
     GO
 
