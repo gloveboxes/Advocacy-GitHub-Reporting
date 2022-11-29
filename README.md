@@ -169,7 +169,7 @@ If you set up the GitHub Metrics solution, then you will have the **github.env**
 1. Select **Fine-grained tokens** and then **Generate new token**.
 1. Name the token **GitHub Metrics**.
 1. Set the **Expiration**. You probably want to set this to custom and set the date to 1 year in the future.
-1. Select **All repositories**, or if you want finer control, select ***Only select repositories*** and select the repos you want to track.
+1. Select **All repositories**, or if you want finer control, select **Only select repositories** and select the repos you want to track.
 1. Select **Repository permissions**.
 1. Select **Administration** to **Read-only**.
 1. Leave the remaining fields with their default values.
