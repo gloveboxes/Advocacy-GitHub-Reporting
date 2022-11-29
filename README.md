@@ -161,14 +161,6 @@ If you didn't set up the GitHub Metrics solution, then the GitHub Metrics soluti
 
 If you set up the GitHub Metrics solution, then you will have the **github.env** config file you created in the [Deploy the GitHub Metrics solution](#deploy-the-github-metrics-solution) section.
 
-#### Install the prerequisites
-
-1. Install the following tools:
-
-    1. The [git client](https://git-scm.com/downloads)
-    1. The [GitHub CLI](https://github.com/cli/cli#installation)
-    1. The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-
 #### Create a GitHub Personal Access Token
 
 1. Navigate to the GitHub web portal and log in.
