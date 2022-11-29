@@ -22,7 +22,7 @@ Follow these steps to deploy the GitHub Metrics solution.
 1. Clone the GitHub metrics solution repository.
 
     ```bash
-    git clone https://github.com/gloveboxes/GitHub-Report-Endpoint.git
+    git clone https://github.com/gloveboxes/GitHub-Metrics-Endpoint.git
     ```
 
 1. Change to the `infra` folder in the cloned repository.
