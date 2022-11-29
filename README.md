@@ -167,7 +167,7 @@ Follow the instructions below for the appropriate scenario.
 
 #### Create a GitHub Personal Access Token
 
-1. Navigate to the Github web portal and login.
+1. Navigate to the GitHub web portal and log in.
 1. Select your profile icon in the top right corner.
 1. Select **Settings**, then **Developer Settings**, then **Personal Access Tokens**.
 1. Select **Fine-grained tokens** and then **Generate new token**.
@@ -176,7 +176,7 @@ Follow the instructions below for the appropriate scenario.
 1. Select **All repositories**, or if you want finer control, select ***Only select repositories*** and select the repos you want to track.
 1. Select **Repository permissions**.
 1. Select **Administration** to **Read-only**.
-1. Leave the remain fields with their default values.
+1. Leave the remaining fields with their default values.
 1. Select **Generate token**.
 1. Copy the token to the clipboard.
 
@@ -188,7 +188,7 @@ Creating a GitHub secrets environment file simplifies the process of uploading t
 1. Update the **REPORTING_PAT** value with the Personal Access Token you copied to the clipboard in the previous step.
 1. Update the **REPORTING_ENDPOINT_URL** field with the Azure Function App Endpoint URL you noted earlier.
 1. Update the **REPORTING_ENDPOINT_KEY** field with the Azure Function App Host Key you noted earlier.
-1. Update the **REPORTING_GROUP** field. The group secret is used for consolidated reporting. The group name is arbitrary, for example, use your team name or your GutHub name.
+1. Update the **REPORTING_GROUP** field. The group secret is used for consolidated reporting. The group name is arbitrary, for example, use your team name or your GitHub name.
 
 ### Upload the GitHub secrets to your GitHub repos
 
@@ -202,7 +202,7 @@ For each repo you want to track, upload the GitHub secrets by following these st
     gh auth login
     ```
 
-1. Set the GitHub repo secrets by running the following command. Be sure to replace the **\<GITHUB_REPO_URL>** with your target Github repo URL.
+1. Set the GitHub repo secrets by running the following command. Be sure to replace the **\<GITHUB_REPO_URL>** with your target GitHub repo URL.
 
     ```bash
     gh secret set --env-file github.env --repo <GITHUB_REPO_URL>
@@ -211,7 +211,7 @@ For each repo you want to track, upload the GitHub secrets by following these st
 ### Create the GitHub Metrics Action
 
 ```yml
-# GitHub Action to post GitHub metrics to a Azure Function App webhook
+# GitHub Action to post GitHub metrics to an Azure Function App webhook
 # Required secrets
 #   1. A PAT with repo rights:    PAT_REPO_REPORT
 #   2. The webhook endpoint url:  REPORTING_ENDPOINT_URL
@@ -251,11 +251,11 @@ This project is open source and welcomes contributions. Please raise an issue or
 
 ## Appendix
 
-### Github organization repos
+### GitHub organization repos
 
 #### Create a GitHub Organization Personal Access Token
 
-1. Navigate to the Github web portal and login.
+1. Navigate to the GitHub web portal and login.
 1. Select your profile icon in the top right corner.
 1. Select **Settings**, then **Developer Settings**, then **Personal Access Tokens**.
 1. Select **Fine-grained tokens** and then **Generate new token**.
