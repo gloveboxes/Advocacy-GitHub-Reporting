@@ -1,10 +1,12 @@
 # GitHub Metrics
 
+[GitHub metrics docs](https://gloveboxes.github.io/GitHub-Metrics-Endpoint/)
+
 ## Overview
 
 ## Set up options
 
-If you are setting up a repo to report to an existing GitHub Metrics application then follow the [Upload GitHub metrics secrets](#upload-github-metrics-secrets) instructions.
+If you are setting up a repo to report to an existing GitHub Metrics application then follow the [Set up a repo to report metrics](#set-up-a-repo-to-report-metrics) instructions.
 
 If you are deploying the GitHub Metrics application then follow the [Deploy the GitHub Metrics solution](#deploy-the-github-metrics-solution) instructions.
 
