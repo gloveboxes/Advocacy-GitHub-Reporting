@@ -206,7 +206,7 @@ For each repo you want to track, upload the GitHub secrets by following these st
     gh secret set --env-file github.env --repo <GITHUB_REPO_URL>
     ```
 
-### Create the GitHub Metrics Action
+### Add the GitHub Metrics Action to a GitHub repo
 
 ```yml
 # GitHub Action to post GitHub metrics to an Azure Function App webhook
