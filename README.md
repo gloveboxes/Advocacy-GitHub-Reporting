@@ -4,6 +4,8 @@
 
 ## Overview
 
+![The image shows the solution architecture](resources/architecture.png)
+
 ## Set up options
 
 If you are setting up a repo to report to an existing GitHub Metrics application then follow the [Set up a repo to report metrics](#set-up-a-repo-to-report-metrics) instructions.
