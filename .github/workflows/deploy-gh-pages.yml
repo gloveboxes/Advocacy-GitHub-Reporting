@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - docs
+  workflow_dispatch: # Allow for running this manually.
+  
 jobs:
   deploy:
     name: Deploy to GitHub Pages
