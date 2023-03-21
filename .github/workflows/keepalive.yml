@@ -2,6 +2,7 @@ name: Github Action Keepalive
 on:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch: # Allow for running this manually.
 
 jobs:
   cronjob-based-github-action:
