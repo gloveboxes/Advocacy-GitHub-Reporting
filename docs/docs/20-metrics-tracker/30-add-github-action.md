@@ -104,4 +104,3 @@ jobs:
 
 1. Select **Start commit**.
 1. Select **Commit new file**.
-
