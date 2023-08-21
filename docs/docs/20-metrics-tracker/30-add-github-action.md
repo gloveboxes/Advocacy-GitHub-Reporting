@@ -58,7 +58,7 @@ Follow these steps to create a GitHub Action that collects metrics from the GitH
 
 ## GitHub Actions Keep Alive
 
-If there no activity on a repo for 60 days then GitHub disables the repo Actions and the metrics reporting Action will no longer run. To address this issue, add the Keep Alive GitHub action. On the 1st of each month the Keep Alive Action will run, and update the .stats_timestamp file with the current UTC time, and the change will be commited and pushed to the repo to create an activity. The Keep Alive Activity will prevent GitHub from disabling the repo Actions.
+If there is no activity on a repo for 60 or more days then GitHub disables the repo Actions and the metrics reporting Action will no longer run. To address this issue, add the Keep-Alive GitHub action. On the 1st of each month, the Keep-Alive Action will run, and update the .stats_timestamp file with the current UTC, and the change will be committed and pushed to the repo to create an activity. The Keep-Alive Activity will stop GitHub from disabling the repo Actions.
 
 1. Navigate to the GitHub repo that you want to track metrics for.
 1. Select **Actions** from the repo menu.
