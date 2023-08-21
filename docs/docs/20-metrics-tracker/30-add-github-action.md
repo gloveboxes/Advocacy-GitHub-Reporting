@@ -67,40 +67,40 @@ If there is no activity on a repo for 60 or more days then GitHub disables the r
 1. Name the workflow **metrics_keepalive.yml**.
 1. Copy the following code into the editor.
 
-```yml
-# GitHub Actions go to sleep after 60 days of no activity
-# This action runs every month and updates the .stats_timestamp with the current UTC
-# This will generate activity on the repo
-# This activity will keep the git hub repo metrics action alive
+  ```yml
+  # GitHub Actions go to sleep after 60 days of no activity
+  # This action runs every month and updates the .stats_timestamp with the current UTC
+  # This will generate activity on the repo
+  # This activity will keep the git hub repo metrics action alive
 
-name: "GitHub repo metrics report keep alive"
+  name: "GitHub repo metrics report keep alive"
 
-on:
-  schedule:
-    # Run this once per day, towards the end of the day for keeping the most
-    # recent data point most meaningful (hours are interpreted in UTC).
-    # https://cron.help/every-month
-    # Action run midnight UTC 1st of each month
-    - cron: "0 0 1 * *"
-  workflow_dispatch: # Allow for running this manually.
+  on:
+    schedule:
+      # Run this once per day, towards the end of the day for keeping the most
+      # recent data point most meaningful (hours are interpreted in UTC).
+      # https://cron.help/every-month
+      # Action run midnight UTC 1st of each month
+      - cron: "0 0 1 * *"
+    workflow_dispatch: # Allow for running this manually.
 
-jobs:
-    resources:
-        name: Update the repo metrics timestamp
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  jobs:
+      resources:
+          name: Update the repo metrics timestamp
+          runs-on: ubuntu-latest
+          steps:
+              - uses: actions/checkout@v3
 
-            - name: timestamp
-              run: date -Iseconds -u > .stats_timestamp
+              - name: timestamp
+                run: date -Iseconds -u > .stats_timestamp
 
-            - name: Update stats timestamp
-              run: |
-                git add .stats_timestamp
-                git config user.name "Repo Stats Timestamp"
-                git commit -am "Repo Stats Timestamp"
-                git push
-```
+              - name: Update stats timestamp
+                run: |
+                  git add .stats_timestamp
+                  git config user.name "Repo Stats Timestamp"
+                  git commit -am "Repo Stats Timestamp"
+                  git push
+  ```
 
 1. Select **Start commit**.
 1. Select **Commit new file**.
