@@ -97,7 +97,8 @@ If there is no activity on a repo for 60 or more days then GitHub disables the r
               - name: Update stats timestamp
                 run: |
                   git add .stats_timestamp
-                  git config user.name "Repo Stats Timestamp"
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
                   git commit -am "Repo Stats Timestamp"
                   git push
   ```
