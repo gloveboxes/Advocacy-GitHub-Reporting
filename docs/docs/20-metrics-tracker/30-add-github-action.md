@@ -105,3 +105,14 @@ If there is no activity on a repo for 60 or more days then GitHub disables the r
 
 1. Select **Start commit**.
 1. Select **Commit new file**.
+
+### Enable r/w workflow permissions
+
+The keepalive action requires read and write permissions.
+
+1. Navigate to the repo `settings` tab.
+2. Select `Actions` from the left hand menubar.
+3. Select `General`
+4. Scroll down to `Workflow permissions`
+5. Select `Read and write permissions`
+6. Seletc `Save`.
